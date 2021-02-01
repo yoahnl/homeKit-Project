@@ -30,7 +30,7 @@ let ps = new shell({
   noProfile: true
 });
 
-ps.addCommand('echo node-powershell')
+ps.addCommand('./openSteam.ps1')
 ps.invoke().then(output => {
   console.log(output);
 }).catch(err => {
