@@ -23,10 +23,20 @@ export class AppController
     console.log("GetOn called !");
     console.log("this is a test !")
     this.state = true;
-    console.log("this.state = " + this.state);
 
-    const {exec} = require("child_process")
-    exec('Home').unref()
+    const shell = require('node-powershell');
+let ps = new shell({
+  executionPolicy: 'Bypass',
+  noProfile: true
+});
+
+ps.addCommand('echo node-powershell')
+ps.invoke().then(output => {
+  console.log(output);
+}).catch(err => {
+  console.log(err);
+  ps.dispose();
+});
     return this.state;
   }
 
