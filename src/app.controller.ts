@@ -1,13 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
 import { response } from 'express';
 import { AppService } from './app.service';
+import { FinalFantasyService } from './final-fantasy/final-fantasy.service';
 
 @Controller()
 export class AppController 
 {
   state: boolean = false;
+  finalFantasyState = false;
 
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private finalFantasyService: FinalFantasyService) {}
 
   @Get()
   connectionAccepted(): number
@@ -30,7 +32,7 @@ let ps = new shell({
   noProfile: true
 });
 
-ps.addCommand('./openSteam.ps1')
+ps.addCommand('./script/openSteam.ps1')
 ps.invoke().then(output => {
   console.log(output);
 }).catch(err => {
@@ -54,7 +56,7 @@ let ps = new shell({
   noProfile: true
 });
 
-ps.addCommand('./closeSteam.ps1')
+ps.addCommand('./script/closeSteam.ps1')
 ps.invoke().then(output => {
   console.log(output);
 }).catch(err => {
@@ -72,5 +74,28 @@ ps.invoke().then(output => {
     console.log("this is a test !")
     console.log("this.state = " + this.state);
     return this.state;
-  }  
+  }
+
+  @Get('/openFinalFantasy')
+  openFinalFantasy(): boolean
+  {
+    this.finalFantasyService.openFinalFantasy();
+    this.finalFantasyState = true;
+    return this.finalFantasyState;
+  }
+
+  @Get('/closeFinalFantasy')
+  closeFinalFantasy(): boolean
+  {
+    this.finalFantasyService.closeFinalFantasy();
+    this.finalFantasyState = true;
+    return this.finalFantasyState;
+  }
+
+  @Get('stateFinalFantasy')
+  stateFinalFantasy(): boolean
+  {
+    console.log('get Final Fantasy state = ' + this.finalFantasyState);
+    return this.finalFantasyState;
+  }
 }
