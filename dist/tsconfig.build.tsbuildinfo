@@ -1456,13 +1456,18 @@
         "signature": "d8f4cb0109c1b399d657807fd6af504d74a9300325e0fc915abdbf658b464a97",
         "affectsGlobalScope": false
       },
+      "../src/final-fantasy/final-fantasy.service.ts": {
+        "version": "c664a459f411fb66d724975f935ff81cf792430c21b898b7650f8f3c36517208",
+        "signature": "9b6e2dd42bcb9cfa485d57a9638fa5491ae795dc8211aad4b250fd943de637d9",
+        "affectsGlobalScope": false
+      },
       "../src/app.controller.ts": {
-        "version": "74c79f87e51f33e014d0a3a9d49fdc6a775568f27996dbd98dadf80bc6a1a523",
-        "signature": "31419f73db97c2c61982eeca2880e176572451d0291703e3f0c813747eab9063",
+        "version": "d295f1c226feb201a3351bd97652560b243067746a7402d2312cc69079ed646e",
+        "signature": "0b9e618f0a3b974fc0cecf43f783175b61bdc0dd6946b084050a2fe56697cbda",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "21366ae45455c42843d8032071a2805cf96f8414b4690ff4ee5e678f5790583c",
+        "version": "b4ecaf08a83d0a9226c53bbf3cf315ba676c7f878f21246aa4ba73e798c7028f",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
@@ -3214,14 +3219,19 @@
       "../src/app.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/express/index.d.ts",
-        "../src/app.service.ts"
+        "../src/app.service.ts",
+        "../src/final-fantasy/final-fantasy.service.ts"
       ],
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/app.controller.ts",
-        "../src/app.service.ts"
+        "../src/app.service.ts",
+        "../src/final-fantasy/final-fantasy.service.ts"
       ],
       "../src/app.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts"
+      ],
+      "../src/final-fantasy/final-fantasy.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts"
       ],
       "../src/main.ts": [
@@ -4505,7 +4515,8 @@
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../src/app.controller.ts": [
-        "../src/app.service.ts"
+        "../src/app.service.ts",
+        "../src/final-fantasy/final-fantasy.service.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -4889,10 +4900,7 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../node_modules/typescript/lib/lib.scripthost.d.ts",
       "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
-      "../src/app.controller.ts",
-      "../src/app.module.ts",
-      "../src/app.service.ts",
-      "../src/main.ts"
+      "../src/app.service.ts"
     ]
   },
   "version": "4.1.3"

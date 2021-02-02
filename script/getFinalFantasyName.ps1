@@ -1,5 +1,5 @@
 $name = Get-Process -Name "ffxiiiimg"
 
-echo $name.Name
+echo $name
 
 Stop-Process -Name $name.Name

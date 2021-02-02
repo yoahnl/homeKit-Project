@@ -12,10 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
+const final_fantasy_service_1 = require("./final-fantasy/final-fantasy.service");
 let AppController = class AppController {
-    constructor(appService) {
+    constructor(appService, finalFantasyService) {
         this.appService = appService;
+        this.finalFantasyService = finalFantasyService;
         this.state = false;
+        this.finalFantasyState = false;
     }
     connectionAccepted() {
         console.log("trying to connect to the server !");
@@ -30,7 +33,7 @@ let AppController = class AppController {
             executionPolicy: 'Bypass',
             noProfile: true
         });
-        ps.addCommand('./openSteam.ps1');
+        ps.addCommand('./script/openSteam.ps1');
         ps.invoke().then(output => {
             console.log(output);
         }).catch(err => {
@@ -49,7 +52,7 @@ let AppController = class AppController {
             executionPolicy: 'Bypass',
             noProfile: true
         });
-        ps.addCommand('./closeSteam.ps1');
+        ps.addCommand('./script/closeSteam.ps1');
         ps.invoke().then(output => {
             console.log(output);
         }).catch(err => {
@@ -63,6 +66,20 @@ let AppController = class AppController {
         console.log("this is a test !");
         console.log("this.state = " + this.state);
         return this.state;
+    }
+    openFinalFantasy() {
+        this.finalFantasyService.openFinalFantasy();
+        this.finalFantasyState = true;
+        return this.finalFantasyState;
+    }
+    closeFinalFantasy() {
+        this.finalFantasyService.closeFinalFantasy();
+        this.finalFantasyState = true;
+        return this.finalFantasyState;
+    }
+    stateFinalFantasy() {
+        console.log('get Final Fantasy state = ' + this.finalFantasyState);
+        return this.finalFantasyState;
     }
 };
 __decorate([
@@ -89,9 +106,27 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Boolean)
 ], AppController.prototype, "getState", null);
+__decorate([
+    common_1.Get('/openFinalFantasy'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Boolean)
+], AppController.prototype, "openFinalFantasy", null);
+__decorate([
+    common_1.Get('/closeFinalFantasy'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Boolean)
+], AppController.prototype, "closeFinalFantasy", null);
+__decorate([
+    common_1.Get('stateFinalFantasy'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Boolean)
+], AppController.prototype, "stateFinalFantasy", null);
 AppController = __decorate([
     common_1.Controller(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
+    __metadata("design:paramtypes", [app_service_1.AppService, final_fantasy_service_1.FinalFantasyService])
 ], AppController);
 exports.AppController = AppController;
 //# sourceMappingURL=app.controller.js.map
