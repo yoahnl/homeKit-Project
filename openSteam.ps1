@@ -4,4 +4,4 @@ cd "Program files (x86)"
 pwd
 cd Steam
 pwd
-steam.exe -tenfoot 
+./steam.exe -tenfoot 

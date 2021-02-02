@@ -47,6 +47,21 @@ ps.invoke().then(output => {
     console.log("this is a test !")
     this.state = false;
     console.log("this.state = " + this.state);
+
+    const shell = require('node-powershell');
+let ps = new shell({
+  executionPolicy: 'Bypass',
+  noProfile: true
+});
+
+ps.addCommand('./closeSteam.ps1')
+ps.invoke().then(output => {
+  console.log(output);
+}).catch(err => {
+  console.log(err);
+  ps.dispose();
+});
+
     return this.state;
   }
 
