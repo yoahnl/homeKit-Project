@@ -1,1 +1,1 @@
-Stop-Process -Name "ffxiiimg"
+Stop-Process -Name "ffxiii"
