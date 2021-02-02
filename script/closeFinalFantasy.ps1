@@ -1,1 +1,1 @@
-Stop-Process -Name "finalfantasy13"
+Stop-Process -Name "FINAL FANTASY XIII"
